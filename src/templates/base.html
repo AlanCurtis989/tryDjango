@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <title>Try Django</title>
+    {% include 'snippets/css.html'%}
+</head>
+
+<body>
+<h1> I am on all pages that inherit</h1>
+{% include 'snippets/nav.html' %}
+<div class="container">
+{% block content %}
+
+
+{% endblock content %}
+</div>
+
+{% include 'snippets/js.html'%}
+</body>
+</html>
