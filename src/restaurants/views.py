@@ -1,14 +1,16 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.views import View
+from django.views.generic import TemplateView
 
-# Create your views here.
-# function based view
-def home(request):
-    #return HttpResponse("This is home page LLLLLLL")
-    return render(request, "home.html", {"myVar":"I am a variable"})#response
+from .models import RestaurantLocation
 
-def about(request):
-    return render(request, "about.html", {"myVar":"Home2"})#response
+def restaurant_listview(request):
+    template_name = 'restaurants/restaurants_list.html'
+    queryset = RestaurantLocation.objects.all()
+    context = {
+        "object_list": queryset
+    }
+    return render(request, template_name, context)
 
-def contact(request):
-    return render(request, "contact.html", {"myVar":"HOME3"})#response
+
